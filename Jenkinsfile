@@ -34,5 +34,10 @@ pipeline {
                 build job: 'deploy-to-stage'
             }
         }
+        stage('Build Docker image'){
+            steps{
+                sh "sudo docker build . -t webapp-helloworld:${env.BUILD_ID}"
+            }
+        }
     }
 }
